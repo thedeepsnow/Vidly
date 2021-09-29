@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "Movies";
+}
+<h2>Movies</h2>
+
+<p>
+    Not a lot in this - just to test a generate multiple models, which generates a movie (Shrek) and two customers. Try 'Customers' for more functionality.
+</p>
+
+<p>
+    @Html.ActionLink("Generate movie", "Random", "Movies", null, new { @class = "btn btn-primary" })
+</p>
+
+<p>
+    @Html.ActionLink("Pass in parameters test", "ByReleaseDate", "Movies", new { year = 2021, month = 5 }, new { @class = "btn btn-primary" })
+</p>
+
+

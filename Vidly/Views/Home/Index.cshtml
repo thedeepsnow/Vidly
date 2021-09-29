@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>MVC 5 / EF CODE-FIRST EXPERIMENT</h1>
+    <p class="lead">Feel free to press anything, this is my learning environment for MVC / EF Code-first.</p>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <h2>Customers</h2>
+        <p>
+            List, add and edit customers.
+        </p>
+        <p>@Html.ActionLink("Customers", "Index", "Customers", null, new { @class = "btn btn-primary" })</p>
+    </div>
+    <div class="col-md-6">
+        <h2>Movies</h2>
+        <p>Generate movie</p>
+        <p>@Html.ActionLink("Generate movie", "Random", "Movies", null, new { @class = "btn btn-primary" })</p>
+    </div>
+</div>

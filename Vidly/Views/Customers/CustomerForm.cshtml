@@ -1,0 +1,46 @@
+﻿@model Vidly.ViewModels.CustomerFormViewModel
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section headtag {
+    @*could use this to put stuff in the head section for example.*@
+    @* I defined 'headtag' in the layout page. *@
+    @* This title example doesn't actually override the title, due to the viewbag title, but could use it to put other stuff in*@
+    <title>interesting</title>
+}
+
+<h2>New Customer</h2>
+
+@using (Html.BeginForm("Save", "Customers"))
+{
+    @Html.ValidationSummary()
+    @Html.ValidationSummary(true, "Please fix the errors below.")
+    @*  You can use the second example above to exclude errors about fields that are hidden - and overwrite the summary message *@
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Customer.Name)
+        @Html.TextBoxFor(m => m.Customer.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Customer.Name)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Customer.MembershipType)
+        @Html.DropDownListFor(m => m.Customer.MembershipType, new SelectList(Model.lstMembershipTypes, "id", "Description"), "Select membership type:" , new { @class = "form-control" })
+    </div>
+
+    @* we use HiddenFor to pass the ID through of 0 when creating a new customer *@
+    @Html.HiddenFor(m => m.Customer.Id)
+    
+    @Html.AntiForgeryToken() // good practice - sends a token - which is then stored as cookie from this web site.
+                            // then when submitted sends token from cookie. Hacker can't do a post from anywhere else then.
+                            // [ValidateAntiForgeryToken] attribute required on Save action
+    <button type="submit" class="btn btn-primary">Save</button>
+}
+
+@section scripts {
+    @* this adds client side validation automtically *@
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
