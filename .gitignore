@@ -3,6 +3,9 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+PASSWORD_NOT_SENT_TO_GITHUB.txt
+
+PASSWORD
 # User-specific files
 *.rsuser
 *.suo
